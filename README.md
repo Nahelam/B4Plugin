@@ -1,7 +1,5 @@
 # B4Plugin (WIP)
-A PCSX2F modding plugin for Burnout Revenge (SLUS-21242).
-
-To be used with [PCSX2 Fork With Plugins](https://github.com/ASI-Factory/PCSX2-Fork-With-Plugins/releases/tag/latest).
+A [PCSX2F](https://github.com/ASI-Factory/PCSX2-Fork-With-Plugins/releases/tag/latest) plugin for modding Burnout Revenge (SLUS-21242).
 
 ## Resources
 
