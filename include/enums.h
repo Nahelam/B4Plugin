@@ -102,7 +102,15 @@ typedef enum {
     eSoundFEIconPop = 4,
     eSoundFELand = 5,
     eSoundFELocked = 6,
-    eSoundFETransition = 7
+    eSoundFETransition = 7,
+    eSoundFEOptionsHoriMove = 55
 } eSoundFEGeneral;
+
+typedef enum {
+	eB4VideoModeNTSC = 0,
+	eB4VideoModeHDTV = 1,
+	eB4VideoModePAL = 2,
+	eB4VideoModeMax = 3
+} EB4VideoMode;
 
 #endif

@@ -11,9 +11,15 @@ void* gHUDSoundManager = 0x1C891B0;
 void* gDebugMenu = 0x1C10EF0;
 CB4DebugMenuComponents* gDebugMenuComponents = 0x1C10EA0;
 void* gDebugMenuPageManager = 0x1C10EE0;
+CB4GraphicsManager* gGraphicsManager = 0x1BFE760;
+void* gAptManager = 0x1C0A2D0;
+void* gGame = 0x4F3300;
 uint64_t* kB4MainMenuStateID = 0x4B80F8;
 uint64_t* kB4DebugMenuStateID = 0x4B6860;
-char** gapcDebugMenu0To99Options = 0x4B6468;
+
+void (*CB4GraphicsManager__SetVideoMode)(CB4GraphicsManager* _this, EB4VideoMode leVideoMode) = 0x14C338;
+void (*CB4AptManager__SetScreenSettings)(void* _this) = 0x17D370;
+void (*CB4Game__SetFrontendFrameRate)(void* _this, bool lbSetFrontendFrameRate) = 0x1125C0;
 
 CGtState* (*CGtFSM__GetStateFromID)(CGtFSM* _this, uint64_t lStateID) = 0x2FED60;
 void (*CGtFSM__StateEnter)(CGtFSM* _this, CGtState* lpOldState, void* lpUserData) = 0x2FEDE0;

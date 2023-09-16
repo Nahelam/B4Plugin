@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "enums.h"
 
+typedef struct CB4GraphicsManager CB4GraphicsManager;
 typedef struct CGtV4d CGtV4d;
 typedef struct CGtState CGtState;
 typedef struct CGtTimer CGtTimer;
@@ -17,6 +18,12 @@ typedef struct CB4DebugOnlineCarSelectComponent CB4DebugOnlineCarSelectComponent
 typedef struct CB4DebugMenuComponents CB4DebugMenuComponents;
 typedef struct CB4DebugVSelectEntry CB4DebugVSelectEntry;
 typedef struct CB4MenuSelectionData CB4MenuSelectionData;
+
+struct CB4GraphicsManager { // 0x12F0
+    uint8_t __pad0[0x4A8];
+    EB4VideoMode meCurrentVideoMode;
+    uint8_t __pad1[0xE44];
+};
 
 struct CGtState { // 0x10
     uint64_t mID; // GtID

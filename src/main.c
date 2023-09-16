@@ -34,7 +34,7 @@ void CB4MainMenuState__ActionHook(void* _this, EGtStateAction leAction, void* lp
     }
 }
 
-void ChangeState(void* _this, uint64_t lDestinationState, uint64_t* lpOldStateID)
+void ChangeState(void* _this, uint64_t lDestinationState, void* lpUserData)
 {
     CGtState* lpNewState;
     CGtState* lpOldState;
@@ -42,7 +42,7 @@ void ChangeState(void* _this, uint64_t lDestinationState, uint64_t* lpOldStateID
     lpNewState = CGtFSM__GetStateFromID(&gMenuFlowManager->mFSM, lDestinationState);
     if (gMenuFlowManager->mFSM.mpState != lpNewState)
     {
-        CGtFSM__StateLeave(&gMenuFlowManager->mFSM, lpNewState, lpOldStateID);
+        CGtFSM__StateLeave(&gMenuFlowManager->mFSM, lpNewState, lpUserData);
         lpOldState = gMenuFlowManager->mFSM.mpState;
         gMenuFlowManager->mFSM.mpState = lpNewState;
         if (gMenuFlowManager->mFSM.mpStateTimer != NULL)
@@ -53,7 +53,7 @@ void ChangeState(void* _this, uint64_t lDestinationState, uint64_t* lpOldStateID
                 lpNewState->mrTimeStateEntered = gMenuFlowManager->mFSM.mpStateTimer->mrTime;
             }
         }
-        CGtFSM__StateEnter(&gMenuFlowManager->mFSM, lpOldState, lpOldStateID);
+        CGtFSM__StateEnter(&gMenuFlowManager->mFSM, lpOldState, lpUserData);
     }
 }
 
@@ -77,7 +77,7 @@ void CB4DebugDebugMenuState__ActionHook(void* _this, EGtStateAction leAction, vo
     // CB4DebugDebugMenuState__Action(_this, leAction, lpOwner, lpActionData, lpUserData);
 }
 
-bool UpdateSelection(CB4DebugVSelectOptionComponent* lpSelector)
+bool UpdateSelection(CB4DebugVSelectOptionComponent* _this)
 {
     bool lbUpdate;
     bool lbSelectDone;
@@ -99,7 +99,7 @@ bool UpdateSelection(CB4DebugVSelectOptionComponent* lpSelector)
         
         if (lbUp || lbDown)
         {
-            lpSelectionData = &lpSelector->mSelectionData;
+            lpSelectionData = &_this->mSelectionData;
             if (lbUp)
             {
                 lbSelectDone = CB4MenuSelectionData__SelectPrev(lpSelectionData);
@@ -108,11 +108,11 @@ bool UpdateSelection(CB4DebugVSelectOptionComponent* lpSelector)
             {
                 lbSelectDone = CB4MenuSelectionData__SelectNext(lpSelectionData);
             }
-            CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x31);
+            CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFEVertMove);
         }
         else if (lbLeft || lbRight)
         {
-            lpSelectionData = &lpSelector->mpEntries[(lpSelector->mSelectionData).mu16CurrentItem].mSelectionData;
+            lpSelectionData = &_this->mpEntries[(_this->mSelectionData).mu16CurrentItem].mSelectionData;
             if (lbLeft)
             {
                 lbSelectDone = CB4MenuSelectionData__SelectPrev(lpSelectionData);
@@ -125,7 +125,7 @@ bool UpdateSelection(CB4DebugVSelectOptionComponent* lpSelector)
             // Don't play the option select sound if there are no options
             if (lpSelectionData->mu16NumItems > 1)
             {
-                CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x32);
+                CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFEOptionsHoriMove);
             }
         }
         
@@ -146,6 +146,19 @@ bool UpdateSelection(CB4DebugVSelectOptionComponent* lpSelector)
     return lbUpdate;
 }
 
+void VideoModeConfirm(CB4DebugVSelectOptionComponent* _this)
+{
+    EB4VideoMode leSelectedVideoMode;
+    
+    leSelectedVideoMode = gaDebugMenuEntries[0].mSelectionData.mu16CurrentItem;
+    if (leSelectedVideoMode != gGraphicsManager->meCurrentVideoMode)
+    {
+        CB4GraphicsManager__SetVideoMode(gGraphicsManager, leSelectedVideoMode);
+        CB4AptManager__SetScreenSettings(gAptManager);
+        CB4Game__SetFrontendFrameRate(gGame, true);
+    }
+}
+
 void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* _this)
 {
     if (UpdateSelection(_this))
@@ -160,9 +173,12 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
     
     else if (CB4InputManager__GetMenuButton(gInputManager, eButtonConfirm, -1))
     {
-        if (gDebugMenuComponents->mVSelectOption.mSelectionData.mu16CurrentItem == 0)
+        switch (gDebugMenuComponents->mVSelectOption.mSelectionData.mu16CurrentItem)
         {
-            CB4HUDSoundManager__HandleFESound(gHUDSoundManager, gaDebugMenuEntries[0].mSelectionData.mu16CurrentItem);
+            case 0: // Video Mode
+                CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFESelect);
+                VideoModeConfirm(_this);
+                break;
         }
     }
 }
@@ -177,7 +193,7 @@ void CB4DebugDebugMenuPage__PrepareHook(void* _this)
     {
         lbEntriesPrepared = true;
         //CB4DebugVSelectEntry__Prepare(&gaDebugMenuEntries[0], gapcDebugMenuEntryNames[0], gapcDebugMenuEntry1Options, sizeof(gapcDebugMenuEntry1Options) / sizeof(gapcDebugMenuEntry1Options[0]), 0);
-        CB4DebugVSelectEntry__Prepare(&gaDebugMenuEntries[0], gapcDebugMenuEntryNames[0], gapcDebugMenu0To99Options, 100, 0);
+        CB4DebugVSelectEntry__Prepare(&gaDebugMenuEntries[0], gapcDebugMenuEntryNames[0], gapcDebugMenuEntryVideoModeOptions, 3, gGraphicsManager->meCurrentVideoMode);
         CB4DebugVSelectEntry__Prepare(&gaDebugMenuEntries[1], gapcDebugMenuEntryNames[1], gapcDebugMenuEntry2Options, sizeof(gapcDebugMenuEntry2Options) / sizeof(gapcDebugMenuEntry2Options[0]), 0);
         CB4DebugVSelectEntry__Prepare(&gaDebugMenuEntries[2], gapcDebugMenuEntryNames[2], gapcDebugMenuEntry3Options, sizeof(gapcDebugMenuEntry3Options) / sizeof(gapcDebugMenuEntry3Options[0]), 0);
         CB4DebugVSelectEntry__Prepare(&gaDebugMenuEntries[3], gapcDebugMenuEntryNames[3], gapcDebugMenuEntry4Options, sizeof(gapcDebugMenuEntry4Options) / sizeof(gapcDebugMenuEntry4Options[0]), 0);

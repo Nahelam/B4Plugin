@@ -7,6 +7,7 @@ void CB4DebugDebugMenuState__ActionHook(void* _this, EGtStateAction leAction, vo
 void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* _this);
 void CB4DebugDebugMenuPage__PrepareHook(void* _this);
 bool UpdateSelection(CB4DebugVSelectOptionComponent* lpSelector);
-void ChangeState(void* _this, uint64_t lDestinationState, uint64_t* lpOldStateID);
+void ChangeState(void* _this, uint64_t lDestinationState, void* lpUserData);
+void VideoModeConfirm(CB4DebugVSelectOptionComponent* _this);
 
 #endif
