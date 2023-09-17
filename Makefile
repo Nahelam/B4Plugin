@@ -1,7 +1,7 @@
 EE_TOOL_PREFIX = mips64r5900el-ps2-elf-
 EE_CC := $(EE_TOOL_PREFIX)gcc
 
-EE_OBJS = main.o log.o mips.o memalloc.o injector.o
+EE_OBJS = b4_plugin.o b4_states.o b4_input.o b4_sound.o b4_debug_menu.o b4_debug_menu_options.o log.o mips.o memalloc.o injector.o
 
 MKDIR = mkdir
 
