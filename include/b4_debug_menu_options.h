@@ -5,10 +5,10 @@
 #include <stdbool.h>
 
 typedef enum {
-	eB4VideoModeNTSC = 0,
-	eB4VideoModeHDTV = 1,
-	eB4VideoModePAL = 2,
-	eB4VideoModeMax = 3
+    eB4VideoModeNTSC = 0,
+    eB4VideoModeHDTV = 1,
+    eB4VideoModePAL = 2,
+    eB4VideoModeMax = 3
 } EB4VideoMode;
 
 typedef enum {
