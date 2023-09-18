@@ -1,8 +1,12 @@
-#ifndef B4_INPUT_H_INCLUDED
-#define B4_INPUT_H_INCLUDED
+#ifndef B4P_INPUT_H_INCLUDED
+#define B4P_INPUT_H_INCLUDED
 
 #include <stdint.h>
 #include <stdbool.h>
+
+// --------------------------------
+//    Enums
+// --------------------------------
 
 typedef enum {
     eGtPS2DualShock_Control_Triangle = 0,
@@ -66,9 +70,30 @@ typedef enum {
     eNumButtons = 25
 } EMenuControls;
 
+// --------------------------------
+//    Structs
+// --------------------------------
+
+
+// --------------------------------
+//    Declarations
+// --------------------------------
+
+
+// --------------------------------
+//    B4 Variables
+// --------------------------------
+
 extern void* gInputManager;
 
-extern float (*CB4ControllerMapping__GetPadControl)(void* _this, EGtPS2DualShockDeviceControl lePadControl, bool lbDebounced, uint8_t ln8Player);
-extern bool (*CB4InputManager__GetMenuButton)(void* _this, EMenuControls leMenuButton, int8_t ln8Player);
+// --------------------------------
+//    B4 Functions
+// --------------------------------
+
+typedef float (*const CB4ControllerMapping__GetPadControl_t)(void* _this, EGtPS2DualShockDeviceControl lePadControl, bool lbDebounced, uint8_t ln8Player);
+typedef bool (*const CB4InputManager__GetMenuButton_t)(void* _this, EMenuControls leMenuButton, int8_t ln8Player);
+
+extern CB4ControllerMapping__GetPadControl_t CB4ControllerMapping__GetPadControl;
+extern CB4InputManager__GetMenuButton_t CB4InputManager__GetMenuButton;
 
 #endif

@@ -1,26 +1,9 @@
-#include "b4_debug_menu.h"
-#include "b4_debug_menu_entries.h"
-#include "b4_debug_menu_options.h"
-#include "b4_input.h"
-#include "b4_sound.h"
-
-// ================================================================
-
-void* gDebugMenu = 0x1C10EF0;
-CB4DebugMenuComponents* gDebugMenuComponents = 0x1C10EA0;
-void* gDebugMenuPageManager = 0x1C10EE0;
-
-void (*CB4DebugMenuPageBase__Prepare)(void* _this) = 0x186DF0;
-void (*CB4DebugDebugMenuPage__Prepare)(void* _this) = 0x186768;
-void (*CB4DebugDebugMenuPage__Update)(void* _this) = 0x1869F0;
-void (*CB4DebugBackgroundComponent__Prepare)(CB4DebugBackgroundComponent* _this) = 0x187078;
-void (*CB4DebugMenuPageManager__ImmediateLeadOut)(void* _this, EB4MenuFlowEvents leEvent) = 0x185DC8;
-void (*CB4DebugVSelectEntry__Prepare)(CB4DebugVSelectEntry* _this, char* lpcEntryName, char** lppcOptionsList, int lnNumOptions, int lnInitialOptionSelection) = 0x1877A8;
-void (*CB4DebugVSelectOptionComponent__Prepare)(CB4DebugVSelectOptionComponent* _this, CB4DebugVSelectEntry* lpEntries, int lnNumEntries) = 0x1877E0;
-bool (*CB4MenuSelectionData__SelectNext)(CB4MenuSelectionData* _this) = 0x183F18;
-bool (*CB4MenuSelectionData__SelectPrev)(CB4MenuSelectionData* _this) = 0x183EF8;
-
-// ================================================================
+#include "b4p_debug_menu.h"
+#include "b4p_debug_menu_entries.h"
+#include "b4p_debug_menu_options.h"
+#include "b4p_flow.h"
+#include "b4p_input.h"
+#include "b4p_sound.h"
 
 static EVSelectUpdateType UpdateSelection(CB4DebugVSelectOptionComponent* _this)
 {
