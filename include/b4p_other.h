@@ -1,9 +1,8 @@
-#ifndef B4P_DEBUG_MENU_OPTIONS_H_INCLUDED
-#define B4P_DEBUG_MENU_OPTIONS_H_INCLUDED
+#ifndef B4P_OTHER_H_INCLUDED
+#define B4P_OTHER_H_INCLUDED
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "b4p_common.h"
 
 // --------------------------------
 //    Enums
@@ -37,8 +36,6 @@ struct CB4GraphicsManager { // 0x12F0
 //    Declarations
 // --------------------------------
 
-void ApplyVideoMode(EB4VideoMode leSelectedVideoMode);
-void ApplySpeedoUnit(ESpeedoUnit leSelectedSpeedoUnit);
 
 // --------------------------------
 //    B4 Variables
@@ -53,10 +50,11 @@ extern void* gGame;
 // --------------------------------
 
 typedef void (*const CB4GraphicsManager__SetVideoMode_t)(CB4GraphicsManager* _this, EB4VideoMode leVideoMode);
+typedef void (*const CB4AptManager__SetScreenSettings_t)(void* _this);
 typedef void (*const CB4Game__SetFrontendFrameRate_t)(void* _this, bool lbSetFrontendFrameRate);
 
 extern CB4GraphicsManager__SetVideoMode_t CB4GraphicsManager__SetVideoMode;
-extern CB4VoidMethod_t CB4AptManager__SetScreenSettings;
+extern CB4AptManager__SetScreenSettings_t CB4AptManager__SetScreenSettings;
 extern CB4Game__SetFrontendFrameRate_t CB4Game__SetFrontendFrameRate;
 
 #endif
