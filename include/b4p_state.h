@@ -1,5 +1,5 @@
-#ifndef b4p_state_H_INCLUDED
-#define b4p_state_H_INCLUDED
+#ifndef B4P_STATE_H_INCLUDED
+#define B4P_STATE_H_INCLUDED
 
 #include <stdint.h>
 #include <stdbool.h>
