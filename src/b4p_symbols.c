@@ -64,6 +64,13 @@ SYM(CB4DebugMenuPages*, gDebugMenuPages, 0x1C10EF0);
 SYM(CB4DebugMenuPages__Init_t, CB4DebugMenuPages__Init, 0x185FE8);
 
 // ----------------------------------------------------------------
+//    b4p_debug_vselect_component
+// ----------------------------------------------------------------
+
+SYM(CB4DebugVSelectComponent__Prepare_t, CB4DebugVSelectComponent__Prepare, 0x187580);
+SYM(CB4DebugVSelectComponent__Update_t, CB4DebugVSelectComponent__Update, 0x1875C8);
+
+// ----------------------------------------------------------------
 //    b4p_debug_vselect_option_component
 // ----------------------------------------------------------------
 

@@ -4,6 +4,7 @@ EE_CC := $(EE_TOOL_PREFIX)gcc
 EE_OBJS = b4p_debug_menu_pages.o \
           b4p_debug_menu_state.o \
           b4p_debug_test_menu_page.o \
+          b4p_debug_vselect_component.o \
           b4p_debug_vselect_option_component.o \
           b4p_main.o \
           b4p_main_menu_state.o \
