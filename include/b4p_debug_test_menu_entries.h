@@ -1,5 +1,5 @@
-#ifndef B4P_DEBUG_DEBUG_MENU_ENTRIES_H_INCLUDED
-#define B4P_DEBUG_DEBUG_MENU_ENTRIES_H_INCLUDED
+#ifndef B4P_DEBUG_TEST_MENU_ENTRIES_H_INCLUDED
+#define B4P_DEBUG_TEST_MENU_ENTRIES_H_INCLUDED
 
 static const char* gapcDebugMenuEntryNames[] = {
     "Video Mode",
@@ -10,6 +10,8 @@ static const char* gapcDebugMenuEntryNames[] = {
     "Test Entry 6 (no options)",
     "Test Entry 7 (no options)"
 };
+
+static CB4DebugVSelectEntry gaDebugTestMenuEntries[sizeof(gapcDebugMenuEntryNames) / sizeof(gapcDebugMenuEntryNames[0])];
 
 static const char* gapcDebugMenuNoOptions[] = {
     " "

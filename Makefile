@@ -1,8 +1,9 @@
 EE_TOOL_PREFIX = mips64r5900el-ps2-elf-
 EE_CC := $(EE_TOOL_PREFIX)gcc
 
-EE_OBJS = b4p_debug_debug_menu_page.o \
-          b4p_debug_debug_menu_state.o \
+EE_OBJS = b4p_debug_menu_pages.o \
+          b4p_debug_menu_state.o \
+          b4p_debug_test_menu_page.o \
           b4p_debug_vselect_option_component.o \
           b4p_main.o \
           b4p_main_menu_state.o \

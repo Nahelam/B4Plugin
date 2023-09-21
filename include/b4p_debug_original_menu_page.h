@@ -1,5 +1,5 @@
-#ifndef B4P_DEBUG_DEBUG_MENU_PAGE_H_INCLUDED
-#define B4P_DEBUG_DEBUG_MENU_PAGE_H_INCLUDED
+#ifndef B4P_DEBUG_ORIGINAL_MENU_PAGE_H_INCLUDED
+#define B4P_DEBUG_ORIGINAL_MENU_PAGE_H_INCLUDED
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -15,9 +15,9 @@
 //    Structs
 // --------------------------------
 
-typedef struct CB4DebugDebugMenuPage CB4DebugDebugMenuPage;
+typedef struct CB4DebugOriginalMenuPage CB4DebugOriginalMenuPage;
 
-struct CB4DebugDebugMenuPage { // 0x28
+struct CB4DebugOriginalMenuPage { // 0x28
     CB4DebugMenuPageBase mBase;
     int32_t meMenuGameMode; // EB4MenuGameMode
     uint64_t mTrackID; // GtID
@@ -35,23 +35,20 @@ struct CB4DebugDebugMenuPage { // 0x28
 //    Declarations
 // --------------------------------
 
-void CB4DebugDebugMenuPage__PrepareHook(CB4DebugDebugMenuPage* _this);
-void CB4DebugDebugMenuPage__UpdateHook(CB4DebugDebugMenuPage* _this);
 
 // --------------------------------
 //    B4 Variables
 // --------------------------------
 
-extern CB4DebugVSelectEntry gaDebugMenuEntries[];
 
 // --------------------------------
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugDebugMenuPage__Prepare_t)(CB4DebugDebugMenuPage* _this);
-typedef void (*const CB4DebugDebugMenuPage__Update_t)(CB4DebugDebugMenuPage* _this);
+typedef void (*const CB4DebugOriginalMenuPage__Prepare_t)(CB4DebugOriginalMenuPage* _this);
+typedef void (*const CB4DebugOriginalMenuPage__Update_t)(CB4DebugOriginalMenuPage* _this);
 
-extern CB4DebugDebugMenuPage__Prepare_t CB4DebugDebugMenuPage__Prepare;
-extern CB4DebugDebugMenuPage__Update_t CB4DebugDebugMenuPage__Update;
+extern CB4DebugOriginalMenuPage__Prepare_t CB4DebugOriginalMenuPage__Prepare;
+extern CB4DebugOriginalMenuPage__Update_t CB4DebugOriginalMenuPage__Update;
 
 #endif

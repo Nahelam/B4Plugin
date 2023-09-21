@@ -1,5 +1,5 @@
-#ifndef B4P_DEBUG_DEBUG_MENU_STATE_H_INCLUDED
-#define B4P_DEBUG_DEBUG_MENU_STATE_H_INCLUDED
+#ifndef B4P_DEBUG_MENU_STATE_H_INCLUDED
+#define B4P_DEBUG_MENU_STATE_H_INCLUDED
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -14,9 +14,9 @@
 //    Structs
 // --------------------------------
 
-typedef struct CB4DebugDebugMenuState CB4DebugDebugMenuState;
+typedef struct CB4DebugMenuState CB4DebugMenuState;
 
-struct CB4DebugDebugMenuState { // 0x18
+struct CB4DebugMenuState { // 0x18
     CGtState mState;
     bool mbDebuggingProgression;
     uint8_t __pad0[7];
@@ -26,7 +26,7 @@ struct CB4DebugDebugMenuState { // 0x18
 //    Declarations
 // --------------------------------
 
-void CB4DebugDebugMenuState__ActionHook(CB4DebugDebugMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
+void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
 
 // --------------------------------
 //    B4 Variables
@@ -37,8 +37,8 @@ void CB4DebugDebugMenuState__ActionHook(CB4DebugDebugMenuState* _this, EGtStateA
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugDebugMenuState__Action_t)(CB4DebugDebugMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
+typedef void (*const CB4DebugMenuState__Action_t)(CB4DebugMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
 
-extern CB4DebugDebugMenuState__Action_t CB4DebugDebugMenuState__Action;
+extern CB4DebugMenuState__Action_t CB4DebugMenuState__Action;
 
 #endif
