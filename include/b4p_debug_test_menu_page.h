@@ -1,8 +1,6 @@
 #ifndef B4P_DEBUG_TEST_MENU_PAGE_H_INCLUDED
 #define B4P_DEBUG_TEST_MENU_PAGE_H_INCLUDED
 
-#include <stdint.h>
-#include <stdbool.h>
 #include "b4p_debug_menu_page_base.h"
 #include "b4p_debug_vselect_option_component.h"
 

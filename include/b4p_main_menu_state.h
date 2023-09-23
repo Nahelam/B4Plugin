@@ -34,8 +34,8 @@ void CB4MainMenuState__ActionHook(CB4MainMenuState* _this, EGtStateAction leActi
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4MainMenuState__Action_t)(CB4MainMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
-typedef void (*const CB4MainMenuState__InitiateConfirm_t)(CB4MainMenuState* _this, uint64_t lDestinationState);
+typedef void (*CB4MainMenuState__Action_t)(CB4MainMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
+typedef void (*CB4MainMenuState__InitiateConfirm_t)(CB4MainMenuState* _this, uint64_t lDestinationState);
 
 extern CB4MainMenuState__Action_t CB4MainMenuState__Action;
 extern CB4MainMenuState__InitiateConfirm_t CB4MainMenuState__InitiateConfirm;

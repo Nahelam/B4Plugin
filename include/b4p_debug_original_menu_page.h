@@ -35,6 +35,7 @@ struct CB4DebugOriginalMenuPage { // 0x28
 //    Declarations
 // --------------------------------
 
+void CB4DebugOriginalMenuPage__UpdateHook(CB4DebugOriginalMenuPage* _this);
 
 // --------------------------------
 //    B4 Variables
@@ -45,8 +46,8 @@ struct CB4DebugOriginalMenuPage { // 0x28
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugOriginalMenuPage__Prepare_t)(CB4DebugOriginalMenuPage* _this);
-typedef void (*const CB4DebugOriginalMenuPage__Update_t)(CB4DebugOriginalMenuPage* _this);
+typedef void (*CB4DebugOriginalMenuPage__Prepare_t)(CB4DebugOriginalMenuPage* _this);
+typedef void (*CB4DebugOriginalMenuPage__Update_t)(CB4DebugOriginalMenuPage* _this);
 
 extern CB4DebugOriginalMenuPage__Prepare_t CB4DebugOriginalMenuPage__Prepare;
 extern CB4DebugOriginalMenuPage__Update_t CB4DebugOriginalMenuPage__Update;

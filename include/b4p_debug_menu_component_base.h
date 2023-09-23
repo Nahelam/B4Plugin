@@ -36,5 +36,8 @@ struct CB4DebugMenuComponentBase { // 0xC
 //    B4 Functions
 // --------------------------------
 
+typedef void (*CB4DebugMenuComponentBase__Release_t)(CB4DebugMenuComponentBase* _this);
+
+extern CB4DebugMenuComponentBase__Release_t CB4DebugMenuComponentBase__Release;
 
 #endif

@@ -37,7 +37,7 @@ void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAc
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugMenuState__Action_t)(CB4DebugMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
+typedef void (*CB4DebugMenuState__Action_t)(CB4DebugMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData);
 
 extern CB4DebugMenuState__Action_t CB4DebugMenuState__Action;
 

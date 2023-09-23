@@ -24,7 +24,7 @@ void CB4DebugVSelectComponent__UpdateHook(CB4DebugVSelectComponent* _this)
         {
             lbSelectDone = CB4MenuSelectionData__SelectNext(lpSelectionData);
         }
-        CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFEVertMove);
+        CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x31);
 
         // Circular selection
         if (!lbSelectDone)

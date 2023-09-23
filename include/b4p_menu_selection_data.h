@@ -33,8 +33,8 @@ struct CB4MenuSelectionData { // 0x4
 //    B4 Functions
 // --------------------------------
 
-typedef bool (*const CB4MenuSelectionData__SelectNext_t)(CB4MenuSelectionData* _this);
-typedef bool (*const CB4MenuSelectionData__SelectPrev_t)(CB4MenuSelectionData* _this);
+typedef bool (*CB4MenuSelectionData__SelectNext_t)(CB4MenuSelectionData* _this);
+typedef bool (*CB4MenuSelectionData__SelectPrev_t)(CB4MenuSelectionData* _this);
 
 extern CB4MenuSelectionData__SelectNext_t CB4MenuSelectionData__SelectNext;
 extern CB4MenuSelectionData__SelectPrev_t CB4MenuSelectionData__SelectPrev;

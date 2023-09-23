@@ -1,39 +1,27 @@
 #ifndef B4P_DEBUG_TEST_MENU_ENTRIES_H_INCLUDED
 #define B4P_DEBUG_TEST_MENU_ENTRIES_H_INCLUDED
 
-static const char* gapcDebugMenuEntryNames[] = {
-    "Video Mode",
-    "Speedometer Unit",
-    "Test Entry 3",
-    "Test Entry 4",
-    "Test Entry 5",
-    "Test Entry 6 (no options)",
-    "Test Entry 7 (no options)"
-};
-
-static CB4DebugVSelectEntry gaDebugTestMenuEntries[sizeof(gapcDebugMenuEntryNames) / sizeof(gapcDebugMenuEntryNames[0])];
-
-static const char* gapcDebugMenuNoOptions[] = {
+static const char* kapcDebugTestMenuNoOptions[] = {
     " "
 };
 
-static const char* gapcDebugMenuEntryVideoModeOptions[] = {
+static const char* kapcDebugTestMenuEntryVideoModeOptions[] = {
     "NTSC",
     "480p",
     "PAL"
 };
 
-static const char* gapcDebugMenuEntryOnOffOptions[] = {
+static const char* kapcDebugTestMenuEntryOnOffOptions[] = {
     "On",
     "Off"
 };
 
-static const char* gapcDebugMenuEntrySpeedoUnitOptions[] = {
+static const char* kapcDebugTestMenuEntrySpeedoUnitOptions[] = {
     "MPH",
     "KPH"
 };
 
-static const char* gapcDebugMenuEntry1Options[] = {
+static const char* kapcDebugTestMenuEntry1Options[] = {
     "Entry 1 Test Option 1",
     "Entry 1 Test Option 2",
     "Entry 1 Test Option 3",
@@ -41,7 +29,7 @@ static const char* gapcDebugMenuEntry1Options[] = {
     "Entry 1 Test Option 5"
 };
 
-static const char* gapcDebugMenuEntry2Options[] = {
+static const char* kapcDebugTestMenuEntry2Options[] = {
     "Entry 2 Test Option 1",
     "Entry 2 Test Option 2",
     "Entry 2 Test Option 3",
@@ -49,7 +37,7 @@ static const char* gapcDebugMenuEntry2Options[] = {
     "Entry 2 Test Option 5"
 };
 
-static const char* gapcDebugMenuEntry3Options[] = {
+static const char* kapcDebugTestMenuEntry3Options[] = {
     "Entry 3 Test Option 1",
     "Entry 3 Test Option 2",
     "Entry 3 Test Option 3",
@@ -57,7 +45,7 @@ static const char* gapcDebugMenuEntry3Options[] = {
     "Entry 3 Test Option 5"
 };
 
-static const char* gapcDebugMenuEntry4Options[] = {
+static const char* kapcDebugTestMenuEntry4Options[] = {
     "Entry 4 Test Option 1",
     "Entry 4 Test Option 2",
     "Entry 4 Test Option 3",
@@ -65,7 +53,7 @@ static const char* gapcDebugMenuEntry4Options[] = {
     "Entry 4 Test Option 5"
 };
 
-static const char* gapcDebugMenuEntry5Options[] = {
+static const char* kapcDebugTestMenuEntry5Options[] = {
     "Entry 5 Test Option 1",
     "Entry 5 Test Option 2",
     "Entry 5 Test Option 3",
@@ -73,7 +61,7 @@ static const char* gapcDebugMenuEntry5Options[] = {
     "Entry 5 Test Option 5"
 };
 
-static const char* gapcDebugMenuEntry0To100Options[] = {
+static const char* kapcDebugTestMenuEntry0To100Options[] = {
     "0",
     "1",
     "2",

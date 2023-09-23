@@ -73,9 +73,9 @@ extern uint64_t* kB4DebugMenuStateID;
 //    B4 Functions
 // --------------------------------
 
-typedef CGtState* (*const CGtFSM__GetStateFromID_t)(CGtFSM* _this, uint64_t lStateID);
-typedef void (*const CGtFSM__StateEnter_t)(CGtFSM* _this, CGtState* lpOldState, void* lpUserData);
-typedef void (*const CGtFSM__StateLeave_t)(CGtFSM* _this, CGtState* lpNewState, void* lpUserData);
+typedef CGtState* (*CGtFSM__GetStateFromID_t)(CGtFSM* _this, uint64_t lStateID);
+typedef void (*CGtFSM__StateEnter_t)(CGtFSM* _this, CGtState* lpOldState, void* lpUserData);
+typedef void (*CGtFSM__StateLeave_t)(CGtFSM* _this, CGtState* lpNewState, void* lpUserData);
 
 extern CGtFSM__GetStateFromID_t CGtFSM__GetStateFromID;
 extern CGtFSM__StateEnter_t CGtFSM__StateEnter;

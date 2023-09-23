@@ -3,12 +3,24 @@
 #include "b4p_debug_test_menu_page.h"
 #include "b4p_debug_menu_page_manager.h"
 #include "b4p_debug_menu_page_base.h"
-#include "b4p_debug_test_menu_entries.h"
+#include "b4p_debug_test_menu_options.h"
 #include "b4p_debug_menu_components.h"
 #include "b4p_debug_background_component.h"
 #include "b4p_debug_vselect_option_component.h"
 #include "b4p_input.h"
 #include "b4p_other.h"
+
+static const char* kapcDebugTestMenuEntryNames[] = {
+    "Video Mode",
+    "Speedometer Unit",
+    "Test Entry 3",
+    "Test Entry 4",
+    "Test Entry 5",
+    "Test Entry 6 (no options)",
+    "Test Entry 7 (no options)"
+};
+
+static CB4DebugVSelectEntry kaDebugTestMenuEntries[COUNT_OF(kapcDebugTestMenuEntryNames)];
 
 static void ApplyVideoMode(EB4VideoMode leSelectedVideoMode)
 {
@@ -61,7 +73,7 @@ void CB4DebugTestMenuPage__Update(CB4DebugTestMenuPage* _this)
 {
     if (CB4InputManager__GetMenuButton(gInputManager, eButtonBack, -1))
     {
-        CB4DebugMenuPageManager__ImmediateLeadOut(gDebugMenuPageManager, eMenuFlowEventMenuPageBack);
+        CB4DebugMenuPageManager__ImmediateLeadOut2(gDebugMenuPageManager, eMenuFlowEventMenuPageBack);
     }
 
     /*
@@ -85,15 +97,15 @@ void CB4DebugTestMenuPage__Prepare(CB4DebugTestMenuPage* _this)
     if (!lbEntriesPrepared)
     {
         lbEntriesPrepared = true;
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[0], gapcDebugMenuEntryNames[0], gapcDebugMenuEntryVideoModeOptions, sizeof(gapcDebugMenuEntryVideoModeOptions) / sizeof(gapcDebugMenuEntryVideoModeOptions[0]), gGraphicsManager->meCurrentVideoMode);
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[1], gapcDebugMenuEntryNames[1], gapcDebugMenuEntrySpeedoUnitOptions, sizeof(gapcDebugMenuEntrySpeedoUnitOptions) / sizeof(gapcDebugMenuEntrySpeedoUnitOptions[0]), eSpeedoUnitMPH);
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[2], gapcDebugMenuEntryNames[2], gapcDebugMenuEntry3Options, sizeof(gapcDebugMenuEntry3Options) / sizeof(gapcDebugMenuEntry3Options[0]), 0);
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[3], gapcDebugMenuEntryNames[3], gapcDebugMenuEntry4Options, sizeof(gapcDebugMenuEntry4Options) / sizeof(gapcDebugMenuEntry4Options[0]), 0);
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[4], gapcDebugMenuEntryNames[4], gapcDebugMenuEntry5Options, sizeof(gapcDebugMenuEntry5Options) / sizeof(gapcDebugMenuEntry5Options[0]), 0);
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[5], gapcDebugMenuEntryNames[5], gapcDebugMenuNoOptions, sizeof(gapcDebugMenuNoOptions) / sizeof(gapcDebugMenuNoOptions[0]), 0);
-        CB4DebugVSelectEntry__Prepare(&gaDebugTestMenuEntries[6], gapcDebugMenuEntryNames[6], gapcDebugMenuNoOptions, sizeof(gapcDebugMenuNoOptions) / sizeof(gapcDebugMenuNoOptions[0]), 0);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[0], kapcDebugTestMenuEntryNames[0], kapcDebugTestMenuEntryVideoModeOptions, COUNT_OF(kapcDebugTestMenuEntryVideoModeOptions), gGraphicsManager->meCurrentVideoMode);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[1], kapcDebugTestMenuEntryNames[1], kapcDebugTestMenuEntrySpeedoUnitOptions, COUNT_OF(kapcDebugTestMenuEntrySpeedoUnitOptions), eSpeedoUnitMPH);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[2], kapcDebugTestMenuEntryNames[2], kapcDebugTestMenuEntry3Options, COUNT_OF(kapcDebugTestMenuEntry3Options), 0);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[3], kapcDebugTestMenuEntryNames[3], kapcDebugTestMenuEntry4Options, COUNT_OF(kapcDebugTestMenuEntry4Options), 0);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[4], kapcDebugTestMenuEntryNames[4], kapcDebugTestMenuEntry5Options, COUNT_OF(kapcDebugTestMenuEntry5Options), 0);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[5], kapcDebugTestMenuEntryNames[5], kapcDebugTestMenuNoOptions, COUNT_OF(kapcDebugTestMenuNoOptions), 0);
+        CB4DebugVSelectEntry__Prepare(&kaDebugTestMenuEntries[6], kapcDebugTestMenuEntryNames[6], kapcDebugTestMenuNoOptions, COUNT_OF(kapcDebugTestMenuNoOptions), 0);
     }
 
     CB4DebugBackgroundComponent__Prepare(&gDebugMenuComponents->mBackground);
-    CB4DebugVSelectOptionComponent__Prepare(&gDebugMenuComponents->mVSelectOption, gaDebugTestMenuEntries, sizeof(gaDebugTestMenuEntries) / sizeof(gaDebugTestMenuEntries[0]));
+    CB4DebugVSelectOptionComponent__Prepare(&gDebugMenuComponents->mVSelectOption, kaDebugTestMenuEntries, COUNT_OF(kaDebugTestMenuEntries));
 }

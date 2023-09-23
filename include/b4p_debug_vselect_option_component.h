@@ -49,9 +49,9 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugVSelectOptionComponent__Prepare_t)(CB4DebugVSelectOptionComponent* _this, CB4DebugVSelectEntry* lpEntries, int lnNumEntries);
-typedef void (*const CB4DebugVSelectOptionComponent__Update_t)(CB4DebugVSelectOptionComponent* _this);
-typedef void (*const CB4DebugVSelectEntry__Prepare_t)(CB4DebugVSelectEntry* _this, const char* lpcEntryName, const char** lppcOptionsList, int lnNumOptions, int lnInitialOptionSelection);
+typedef void (*CB4DebugVSelectOptionComponent__Prepare_t)(CB4DebugVSelectOptionComponent* _this, CB4DebugVSelectEntry* lpEntries, int lnNumEntries);
+typedef void (*CB4DebugVSelectOptionComponent__Update_t)(CB4DebugVSelectOptionComponent* _this);
+typedef void (*CB4DebugVSelectEntry__Prepare_t)(CB4DebugVSelectEntry* _this, const char* lpcEntryName, const char** lppcOptionsList, int lnNumOptions, int lnInitialOptionSelection);
 
 extern CB4DebugVSelectOptionComponent__Prepare_t CB4DebugVSelectOptionComponent__Prepare;
 extern CB4DebugVSelectOptionComponent__Update_t CB4DebugVSelectOptionComponent__Update;

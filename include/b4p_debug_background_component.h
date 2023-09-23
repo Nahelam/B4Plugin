@@ -32,7 +32,7 @@ struct CB4DebugBackgroundComponent { // 0xC
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugBackgroundComponent__Prepare_t)(CB4DebugBackgroundComponent* _this);
+typedef void (*CB4DebugBackgroundComponent__Prepare_t)(CB4DebugBackgroundComponent* _this);
 
 extern CB4DebugBackgroundComponent__Prepare_t CB4DebugBackgroundComponent__Prepare;
 

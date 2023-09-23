@@ -26,6 +26,7 @@ struct CB4DebugMenuPageManager { // 0x10
 //    Declarations
 // --------------------------------
 
+void CB4DebugMenuPageManager__ImmediateLeadOut2(CB4DebugMenuPageManager* _this, EB4MenuFlowEvents leEvent);
 
 // --------------------------------
 //    B4 Variables
@@ -37,7 +38,7 @@ extern CB4DebugMenuPageManager* gDebugMenuPageManager;
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugMenuPageManager__ImmediateLeadOut_t)(void* _this, EB4MenuFlowEvents leEvent);
+typedef void (*CB4DebugMenuPageManager__ImmediateLeadOut_t)(CB4DebugMenuPageManager* _this, EB4MenuFlowEvents leEvent);
 
 extern CB4DebugMenuPageManager__ImmediateLeadOut_t CB4DebugMenuPageManager__ImmediateLeadOut;
 

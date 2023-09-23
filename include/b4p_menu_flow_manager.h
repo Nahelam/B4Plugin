@@ -60,7 +60,7 @@ extern CB4MenuFlowManager* gMenuFlowManager;
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4MenuFlowManager__ApplyEvent_t)(CB4MenuFlowManager* _this, uint32_t lnEventID, void* lpUserData);
+typedef void (*CB4MenuFlowManager__ApplyEvent_t)(CB4MenuFlowManager* _this, uint32_t lnEventID, void* lpUserData);
 
 extern CB4MenuFlowManager__ApplyEvent_t CB4MenuFlowManager__ApplyEvent;
 

@@ -49,9 +49,9 @@ extern void* gGame;
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4GraphicsManager__SetVideoMode_t)(CB4GraphicsManager* _this, EB4VideoMode leVideoMode);
-typedef void (*const CB4AptManager__SetScreenSettings_t)(void* _this);
-typedef void (*const CB4Game__SetFrontendFrameRate_t)(void* _this, bool lbSetFrontendFrameRate);
+typedef void (*CB4GraphicsManager__SetVideoMode_t)(CB4GraphicsManager* _this, EB4VideoMode leVideoMode);
+typedef void (*CB4AptManager__SetScreenSettings_t)(void* _this);
+typedef void (*CB4Game__SetFrontendFrameRate_t)(void* _this, bool lbSetFrontendFrameRate);
 
 extern CB4GraphicsManager__SetVideoMode_t CB4GraphicsManager__SetVideoMode;
 extern CB4AptManager__SetScreenSettings_t CB4AptManager__SetScreenSettings;

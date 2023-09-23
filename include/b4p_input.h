@@ -90,8 +90,8 @@ extern void* gInputManager;
 //    B4 Functions
 // --------------------------------
 
-typedef float (*const CB4ControllerMapping__GetPadControl_t)(void* _this, EGtPS2DualShockDeviceControl lePadControl, bool lbDebounced, uint8_t ln8Player);
-typedef bool (*const CB4InputManager__GetMenuButton_t)(void* _this, EMenuControls leMenuButton, int8_t ln8Player);
+typedef float (*CB4ControllerMapping__GetPadControl_t)(void* _this, EGtPS2DualShockDeviceControl lePadControl, bool lbDebounced, uint8_t ln8Player);
+typedef bool (*CB4InputManager__GetMenuButton_t)(void* _this, EMenuControls leMenuButton, int8_t ln8Player);
 
 extern CB4ControllerMapping__GetPadControl_t CB4ControllerMapping__GetPadControl;
 extern CB4InputManager__GetMenuButton_t CB4InputManager__GetMenuButton;

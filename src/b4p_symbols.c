@@ -1,6 +1,7 @@
 #include "b4p_debug_background_component.h"
 #include "b4p_debug_original_menu_page.h"
 #include "b4p_debug_menu_state.h"
+#include "b4p_debug_menu_component_base.h"
 #include "b4p_debug_menu_components.h"
 #include "b4p_other.h"
 #include "b4p_debug_menu_page_base.h"
@@ -23,17 +24,10 @@
 SYM(CB4DebugBackgroundComponent__Prepare_t, CB4DebugBackgroundComponent__Prepare, 0x187078);
 
 // ----------------------------------------------------------------
-//    b4p_debug_original_menu_page
+//    b4p_debug_menu_component_base
 // ----------------------------------------------------------------
 
-SYM(CB4DebugOriginalMenuPage__Prepare_t, CB4DebugOriginalMenuPage__Prepare, 0x186768);
-SYM(CB4DebugOriginalMenuPage__Update_t, CB4DebugOriginalMenuPage__Update, 0x1869F0);
-
-// ----------------------------------------------------------------
-//    b4p_debug_menu_state
-// ----------------------------------------------------------------
-
-SYM(CB4DebugMenuState__Action_t, CB4DebugMenuState__Action, 0x192248);
+SYM(CB4DebugMenuComponentBase__Release_t, CB4DebugMenuComponentBase__Release, 0x187170);
 
 // ----------------------------------------------------------------
 //    b4p_debug_menu_components
@@ -62,6 +56,19 @@ SYM(CB4DebugMenuPageManager__ImmediateLeadOut_t, CB4DebugMenuPageManager__Immedi
 SYM(CB4DebugMenuPages*, gDebugMenuPages, 0x1C10EF0);
 
 SYM(CB4DebugMenuPages__Init_t, CB4DebugMenuPages__Init, 0x185FE8);
+
+// ----------------------------------------------------------------
+//    b4p_debug_menu_state
+// ----------------------------------------------------------------
+
+SYM(CB4DebugMenuState__Action_t, CB4DebugMenuState__Action, 0x192248);
+
+// ----------------------------------------------------------------
+//    b4p_debug_original_menu_page
+// ----------------------------------------------------------------
+
+SYM(CB4DebugOriginalMenuPage__Prepare_t, CB4DebugOriginalMenuPage__Prepare, 0x186768);
+SYM(CB4DebugOriginalMenuPage__Update_t, CB4DebugOriginalMenuPage__Update, 0x1869F0);
 
 // ----------------------------------------------------------------
 //    b4p_debug_vselect_component

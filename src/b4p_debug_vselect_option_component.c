@@ -34,7 +34,7 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
             {
                 lbSelectDone = CB4MenuSelectionData__SelectNext(lpSelectionData);
             }
-            CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFEVertMove);
+            CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x31);
         }
         else if (lbLeft || lbRight)
         {
@@ -52,7 +52,7 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
             if (lpSelectionData->mu16NumItems > 1)
             {
                 leUpdateType = eVSelectOptionUpdateTypeHorizontal;
-                CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFEOptionsHoriMove);
+                CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x35);
             }
         }
 
@@ -68,6 +68,6 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
                 lpSelectionData->mu16CurrentItem = 0;
             }
         }
-        CB4MenuFlowManager__ApplyEvent(gMenuFlowManager, eMenuFlowEventMenuPageDebugButtonEvent, (void*)leUpdateType);
+        CB4MenuFlowManager__ApplyEvent(gMenuFlowManager, eMenuFlowEventMenuPageSelectedOption, (void*)leUpdateType);
     }
 }

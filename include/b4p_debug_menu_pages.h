@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "b4p_debug_original_menu_page.h"
 
+#define NB_PAGES 3
+
 // --------------------------------
 //    Enums
 // --------------------------------
@@ -30,6 +32,8 @@ struct CB4DebugMenuPages { // 0x70
 //    Declarations
 // --------------------------------
 
+extern CB4DebugMenuPageBase* gapDebugMenuPagesBases[];
+
 void CB4DebugMenuPages__InitHook();
 
 // --------------------------------
@@ -42,7 +46,7 @@ extern CB4DebugMenuPages* gDebugMenuPages;
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4DebugMenuPages__Init_t)();
+typedef void (*CB4DebugMenuPages__Init_t)();
 
 extern CB4DebugMenuPages__Init_t CB4DebugMenuPages__Init;
 

@@ -37,7 +37,7 @@ extern void* gHUDSoundManager;
 //    B4 Functions
 // --------------------------------
 
-typedef void (*const CB4HUDSoundManager__HandleFESound_t)(void* _this, eSoundFEGeneral leSound);
+typedef void (*CB4HUDSoundManager__HandleFESound_t)(void* _this, eSoundFEGeneral leSound);
 
 extern CB4HUDSoundManager__HandleFESound_t CB4HUDSoundManager__HandleFESound;
 
