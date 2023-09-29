@@ -1,7 +1,6 @@
 #include "log.h"
 #include "b4p_debug_menu_page_manager.h"
 #include "b4p_debug_menu_state.h"
-#include "b4p_debug_test_menu_page.h"
 #include "b4p_debug_main_menu_page.h"
 #include "b4p_debug_menu_components.h"
 #include "b4p_debug_menu_pages.h"
@@ -15,8 +14,7 @@ void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAc
 {
     CB4DebugMenuPageBase* lpCurrentPage;
     CB4DebugMenuPageBase* lpDestinationPage;
-    CB4DebugMenuPageBase__Prepare_t lpfnPrepare;
-    CB4DebugMenuPageBase__ApplyVSelectOption_t lpfnApplyVSelectOption;
+    CB4DebugMenuPageBase__Prepare_t lpfPrepare;
     
     lpCurrentPage = gDebugMenuPageManager->mpCurrentPage;
     // lpUserData contains the original debug menu base address when we leave it (forward & back events)
@@ -39,17 +37,21 @@ void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAc
         switch ((EB4MenuFlowEvents)lpActionData)
         {
             case eMenuFlowEventMenuPageForward:
-                // Current entry + 1 because index 0 is main menu
-                lpDestinationPage = gapDebugMenuPagesBases[gDebugMenuComponents->mVSelect.mSelectionData.mu16CurrentItem + 1];
-                
-                lpfnPrepare = (CB4DebugMenuPageBase__Prepare_t)lpDestinationPage->__vtable->Prepare.__pfn;
-                lpfnPrepare(lpDestinationPage);
-                
+                if ((CB4DebugMenuPageBase*)lpUserData != &gDebugMainMenuPage.mBase) // When we are coming back from a sub menu with changes applied
+                {
+                    CB4DebugMainMenuPage__Prepare(&gDebugMainMenuPage);
+                }
+                else
+                {
+                    lpDestinationPage = gapDebugMenuPagesBases[gDebugMenuComponents->mVSelect.mSelectionData.mu16CurrentItem + 1]; // Current entry + 1 because index 0 is main menu
+                    lpfPrepare = (CB4DebugMenuPageBase__Prepare_t)lpDestinationPage->__vtable->Prepare.__pfn;
+                    lpfPrepare(lpDestinationPage);
+                }
                 CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x34);
                 break;
 
             case eMenuFlowEventMenuPageBack:
-                if (((CB4DebugMenuPageBase*)lpUserData) == &gDebugMainMenuPage.mBase)
+                if ((CB4DebugMenuPageBase*)lpUserData == &gDebugMainMenuPage.mBase)
                 {
                     ChangeState(*kB4MainMenuStateID, kB4DebugMenuStateID);
                     CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFELand);
@@ -60,24 +62,13 @@ void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAc
                     CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x36);
                 }
                 break;
-
-            case eMenuFlowEventMenuPageSelectedOption:
-                if ((EVSelectOptionUpdateType)lpUserData == eVSelectOptionUpdateTypeHorizontal)
-                {
-                    lpfnApplyVSelectOption = (CB4DebugMenuPageBase__ApplyVSelectOption_t)(lpCurrentPage->__vtable->ApplyVSelectOption.__pfn);
-                    if (lpfnApplyVSelectOption)
-                    {
-                        lpfnApplyVSelectOption(lpCurrentPage);
-                    }
-                }
-                break;
         }
     }
 
-/*
+
     if (leAction != eGtStateActionUpdate)
     {
         logger.WriteF("Action: %08X, ActionData: %08X, UserData: %08X", leAction, lpActionData, lpUserData);
     }
-*/
+
 }

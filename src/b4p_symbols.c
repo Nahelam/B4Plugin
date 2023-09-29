@@ -9,6 +9,7 @@
 #include "b4p_debug_menu_pages.h"
 #include "b4p_debug_vselect_option_component.h"
 #include "b4p_state.h"
+#include "b4p_hud.h"
 #include "b4p_input.h"
 #include "b4p_main_menu_state.h"
 #include "b4p_menu_selection_data.h"
@@ -86,6 +87,24 @@ SYM(CB4DebugVSelectOptionComponent__Update_t, CB4DebugVSelectOptionComponent__Up
 SYM(CB4DebugVSelectEntry__Prepare_t, CB4DebugVSelectEntry__Prepare, 0x1877A8);
 
 // ----------------------------------------------------------------
+//    b4p_hud
+// ----------------------------------------------------------------
+
+SYM(CB4HUDManager*, gHUDManager, 0x1C024A0);
+SYM(gHUDSpeedoComponent_t*, gHUDSpeedoComponent, 0x1C03AC0);
+SYM(gHUDPosComponent_t*, gHUDPosComponent, 0x1C02A80);
+
+SYM(CB4HUDManager__PrepareNormalComponents_t, CB4HUDManager__PrepareNormalComponents, 0x16AD30);
+SYM(CB4HUDManager__Render_t, CB4HUDManager__Render, 0x16BA38);
+SYM(CB4HUDSpeedo__Prepare_t, CB4HUDSpeedo__Prepare, 0x1764E8);
+SYM(CB4HUDPos__Prepare_t, CB4HUDPos__Prepare, 0x172838);
+SYM(CB4HUDLap__Prepare_t, CB4HUDLap__Prepare, 0x16A468);
+SYM(CB4HUDRating__Prepare_t, CB4HUDRating__Prepare, 0x172DB0);
+SYM(CB4HUDGameMode__Prepare_t, CB4HUDGameMode__Prepare, 0x169528);
+SYM(CB4HUDText2dObject__Prepare_t, CB4HUDText2dObject__Prepare, 0x176C10);
+SYM(CGtUnicode__PrintInt_t, CGtUnicode__PrintInt, 0x2FCCB8);
+
+// ----------------------------------------------------------------
 //    b4p_input
 // ----------------------------------------------------------------
 
@@ -127,6 +146,7 @@ SYM(void*, gGame, 0x4F3300);
 SYM(CB4GraphicsManager__SetVideoMode_t, CB4GraphicsManager__SetVideoMode, 0x14C338);
 SYM(CB4AptManager__SetScreenSettings_t, CB4AptManager__SetScreenSettings, 0x17D370);
 SYM(CB4Game__SetFrontendFrameRate_t, CB4Game__SetFrontendFrameRate, 0x1125C0);
+SYM(CB4Game__IsMultiplayerMode_t, CB4Game__IsMultiplayerMode, 0x105060);
 
 // ----------------------------------------------------------------
 //    b4p_sound

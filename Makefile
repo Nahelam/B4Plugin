@@ -1,14 +1,16 @@
 EE_TOOL_PREFIX = mips64r5900el-ps2-elf-
 EE_CC := $(EE_TOOL_PREFIX)gcc
 
-EE_OBJS = b4p_debug_main_menu_page.o \
+EE_OBJS = b4p_debug_menu_common_options.o \
+          b4p_debug_hud_menu_page.o \
+          b4p_debug_main_menu_page.o \
           b4p_debug_menu_page_manager.o \
           b4p_debug_menu_pages.o \
           b4p_debug_menu_state.o \
           b4p_debug_original_menu_page.o \
-          b4p_debug_test_menu_page.o \
           b4p_debug_vselect_component.o \
           b4p_debug_vselect_option_component.o \
+          b4p_hud.o \
           b4p_main.o \
           b4p_main_menu_state.o \
           b4p_state.o \
@@ -34,7 +36,7 @@ BASE_ADDRESS = 0x02100000
 EE_LINKFILE = Linkfile
 
 EE_WARNFLAGS = -Wall
-EE_OPTFLAGS = -O0
+EE_OPTFLAGS = -O1
 EE_LDFLAGS = -Wl,--entry=init -Wl,-zmax-page-size=128 -Wl,'--defsym=BASE_ADDRESS=$(BASE_ADDRESS)'
 EE_CFLAGS := -D_EE -G0 $(EE_OPTFLAGS) $(EE_WARNFLAGS) $(EE_INCS)
 

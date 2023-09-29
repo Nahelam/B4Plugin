@@ -9,11 +9,6 @@
 //    Enums
 // --------------------------------
 
-typedef enum {
-    eVSelectOptionUpdateTypeNone = 0,
-    eVSelectOptionUpdateTypeVertical = 1,
-    eVSelectOptionUpdateTypeHorizontal = 2
-} EVSelectOptionUpdateType;
 
 // --------------------------------
 //    Structs
@@ -49,9 +44,9 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
 //    B4 Functions
 // --------------------------------
 
-typedef void (*CB4DebugVSelectOptionComponent__Prepare_t)(CB4DebugVSelectOptionComponent* _this, CB4DebugVSelectEntry* lpEntries, int lnNumEntries);
+typedef void (*CB4DebugVSelectOptionComponent__Prepare_t)(CB4DebugVSelectOptionComponent* _this, CB4DebugVSelectEntry* lpEntries, int32_t lnNumEntries);
 typedef void (*CB4DebugVSelectOptionComponent__Update_t)(CB4DebugVSelectOptionComponent* _this);
-typedef void (*CB4DebugVSelectEntry__Prepare_t)(CB4DebugVSelectEntry* _this, const char* lpcEntryName, const char** lppcOptionsList, int lnNumOptions, int lnInitialOptionSelection);
+typedef void (*CB4DebugVSelectEntry__Prepare_t)(CB4DebugVSelectEntry* _this, const char* lpcEntryName, const char** lppcOptionsList, int32_t lnNumOptions, int32_t lnInitialOptionSelection);
 
 extern CB4DebugVSelectOptionComponent__Prepare_t CB4DebugVSelectOptionComponent__Prepare;
 extern CB4DebugVSelectOptionComponent__Update_t CB4DebugVSelectOptionComponent__Update;

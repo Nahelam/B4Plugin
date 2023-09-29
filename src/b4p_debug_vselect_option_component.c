@@ -6,7 +6,6 @@
 
 void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* _this)
 {
-    EVSelectOptionUpdateType leUpdateType;
     bool lbSelectDone;
     bool lbUp;
     bool lbDown;
@@ -14,7 +13,6 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
     bool lbRight;
     CB4MenuSelectionData* lpSelectionData;
 
-    leUpdateType = eVSelectOptionUpdateTypeNone;
     lbUp = CB4InputManager__GetMenuButton(gInputManager, eButtonUp, -1);
     lbDown = CB4InputManager__GetMenuButton(gInputManager, eButtonDown, -1);
     lbLeft = CB4InputManager__GetMenuButton(gInputManager, eButtonLeft, -1);
@@ -24,7 +22,6 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
     {
         if (lbUp || lbDown)
         {
-            leUpdateType = eVSelectOptionUpdateTypeVertical;
             lpSelectionData = &_this->mSelectionData;
             if (lbUp)
             {
@@ -51,7 +48,6 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
             // Don't play the option select sound if there are no options
             if (lpSelectionData->mu16NumItems > 1)
             {
-                leUpdateType = eVSelectOptionUpdateTypeHorizontal;
                 CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x35);
             }
         }
@@ -68,6 +64,5 @@ void CB4DebugVSelectOptionComponent__UpdateHook(CB4DebugVSelectOptionComponent* 
                 lpSelectionData->mu16CurrentItem = 0;
             }
         }
-        CB4MenuFlowManager__ApplyEvent(gMenuFlowManager, eMenuFlowEventMenuPageSelectedOption, (void*)leUpdateType);
     }
 }

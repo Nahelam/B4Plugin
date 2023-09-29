@@ -33,7 +33,6 @@ extern CB4DebugMainMenuPage__vtable gDebugMainMenuPage__vtable;
 void CB4DebugMainMenuPage__Prepare(CB4DebugMainMenuPage* _this);
 void CB4DebugMainMenuPage__Update(CB4DebugMainMenuPage* _this);
 void CB4DebugMainMenuPage__Release(CB4DebugMainMenuPage* _this);
-void CB4DebugMainMenuPage__ApplyVSelectOption(CB4DebugMainMenuPage* _this);
 
 // --------------------------------
 //    B4 Variables

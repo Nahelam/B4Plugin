@@ -19,12 +19,11 @@
 typedef struct CB4DebugMenuPageBase CB4DebugMenuPageBase;
 typedef struct CB4DebugMenuPageBase__vtable CB4DebugMenuPageBase__vtable;
 
-// Added "Prepare" and "ApplyVSelectOption" methods to the original vtable structure
+// Added "Prepare" method to the original vtable structure by replacing unused bytes
 struct CB4DebugMenuPageBase__vtable { // 0x20
     __vtbl_ptr_type Prepare; // uint8_t __pad0[8];
     __vtbl_ptr_type Update;
     __vtbl_ptr_type Release;
-    __vtbl_ptr_type ApplyVSelectOption;
 };
 
 struct CB4DebugMenuPageBase { // 0x4
@@ -35,7 +34,6 @@ struct CB4DebugMenuPageBase { // 0x4
 //    Declarations
 // --------------------------------
 
-typedef void (*CB4DebugMenuPageBase__ApplyVSelectOption_t)(CB4DebugMenuPageBase* _this);
 typedef void (*CB4DebugMenuPageBase__Release_t)(CB4DebugMenuPageBase* _this);
 
 // --------------------------------

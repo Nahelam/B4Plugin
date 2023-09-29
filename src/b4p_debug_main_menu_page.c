@@ -7,8 +7,8 @@
 #include "b4p_input.h"
 
 static const char* kapcDebugMainMenuEntryNames[] = {
-    "Test Menu",
-    "Legacy Menu(with all its flaws)"
+    "HUD Menu",
+    "Legacy Menu"
 };
 
 void CB4DebugMainMenuPage__Update(CB4DebugMainMenuPage* _this)

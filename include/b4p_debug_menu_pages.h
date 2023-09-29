@@ -32,7 +32,7 @@ struct CB4DebugMenuPages { // 0x70
 //    Declarations
 // --------------------------------
 
-extern CB4DebugMenuPageBase* gapDebugMenuPagesBases[];
+extern CB4DebugMenuPageBase* gapDebugMenuPagesBases[NB_PAGES];
 
 void CB4DebugMenuPages__InitHook();
 

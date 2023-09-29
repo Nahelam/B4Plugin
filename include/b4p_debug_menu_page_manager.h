@@ -4,6 +4,7 @@
 #include "b4p_debug_menu_page_base.h"
 #include "b4p_debug_menu_component_base.h"
 #include "b4p_menu_flow_manager.h"
+#include "b4p_other.h"
 
 // --------------------------------
 //    Enums
@@ -17,7 +18,7 @@
 typedef struct CB4DebugMenuPageManager CB4DebugMenuPageManager;
 
 struct CB4DebugMenuPageManager { // 0x10
-    float mRenderSize[2]; // CGtV2d
+    CGtV2d mRenderSize; // CGtV2d
     CB4DebugMenuPageBase *mpCurrentPage;
     CB4DebugMenuComponentBase *mpFirstComponent;
 };
