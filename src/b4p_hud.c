@@ -24,30 +24,40 @@ void CB4HUDManager__RenderHook(CB4HUDManager* _this)
     }
 }
 
-void CB4HUDSpeedo__PrepareHook(void* _this, CGtV2d* lPos, CGtV2d* lHandle, float lrHeight, EStyle leStyle, uint16_t* lpString) // broken
+void CB4HUDSpeedo__PrepareHook(void* _this, CGtV2d* lPos, CGtV2d* lHandle, float lrHeight, EStyle leStyle, uint16_t* lpString)
 {
     if (gleDebugHUDMenuSpeedometerUnit == eSpeedoUnitKPH)
     {
-        lpString = (uint32_t)lpString - 8; // MPH and KPH strings are contiguous (ou pas en fait)
+        // lpString = CB4HUDComponent__mgapHUDStrings[13];
+        asm ( // Using an asm hack here because lrHeight is stored in the f12 register thus lpString is in a4 but the compiler thinks it is in a5, idk how to fix this
+            "move $a4, %0"
+            :
+            : "r" (CB4HUDComponent__mgapHUDStrings[13])
+        );
     }
     CB4HUDText2dObject__Prepare(_this, lPos, lHandle, lrHeight, leStyle, lpString);
 }
 
 uint16_t* CB4HUDSpeedo__UpdateHook(uint16_t* lpTargetString, int32_t luValue, int32_t lnPrecision, ENumericFormat leFormat)
 {
-    float lrValue;
+    float lrf0;
+
+    asm (
+        "swc1 $f0, %0"
+        :
+        : "m" (lrf0)
+    );
     
-    lrValue = (float)luValue;
     if (gleDebugHUDMenuSpeedometerUnit == eSpeedoUnitMPH)
     {
-        lrValue *= MPH_CONV_FACTOR;
+        lrf0 *= MPH_CONV_FACTOR;
     }
     else if (gleDebugHUDMenuSpeedometerUnit == eSpeedoUnitKPH)
     {
-        lrValue *= KPH_CONV_FACTOR;
+        lrf0 *= KPH_CONV_FACTOR;
     }
     
-    return CGtUnicode__PrintInt(lpTargetString, (int32_t)lrValue, lnPrecision, leFormat);
+    return CGtUnicode__PrintInt(lpTargetString, (int32_t)lrf0, lnPrecision, leFormat);
 }
 
 bool CB4HUDRating__PrepareHook(void* _this, EPlayerCarIndex lePlayer, EHUDAlign leAlign, int32_t lxFlags)

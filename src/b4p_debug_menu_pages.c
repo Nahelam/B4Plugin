@@ -35,6 +35,11 @@ static void InitVTable(CB4DebugMenuPageBase* lpPageBase, CB4DebugMenuPageBase__v
     lpPageBase->__vtable = lpVTable;
 }
 
+static void InitPagesSelections()
+{
+    CB4DebugHUDMenuPage__InitSelections(&gDebugHUDMenuPage);
+}
+
 void CB4DebugMenuPages__InitHook()
 {
     CB4DebugMenuPages__Init();
@@ -43,6 +48,7 @@ void CB4DebugMenuPages__InitHook()
     gDebugMenuPages->mDebugMenu.mBase.__vtable->Prepare.__pfn = CB4DebugOriginalMenuPage__Prepare;
     
     InitPagesBases();
+    InitPagesSelections();
     
     InitVTable(&gDebugMainMenuPage.mBase, &gDebugMainMenuPage__vtable.__vtable, (void*)&CB4DebugMainMenuPage__Prepare, (void*)&CB4DebugMainMenuPage__Update, (void*)&CB4DebugMainMenuPage__Release);
     InitVTable(&gDebugHUDMenuPage.mBase, &gDebugHUDMenuPage__vtable.__vtable, (void*)&CB4DebugHUDMenuPage__Prepare, (void*)&CB4DebugHUDMenuPage__Update, (void*)&CB4DebugHUDMenuPage__Release);

@@ -38,7 +38,7 @@ void init()
     injector.MakeJAL(0x10E748, (uintptr_t)&CB4HUDManager__RenderHook);
     injector.MakeJAL(0x110D68, (uintptr_t)&CB4HUDManager__RenderHook);
     
-    injector.MakeNOP(0x176824); // NOP the game speedo calculation
+    injector.MakeNOPWithSize(0x176824, 12); // NOP the game speedo calculation
     injector.MakeJAL(0x176654, (uintptr_t)&CB4HUDSpeedo__PrepareHook); // Handle the speedo string
     injector.MakeJAL(0x17683C, (uintptr_t)&CB4HUDSpeedo__UpdateHook); // Handle the speedo calculation
     

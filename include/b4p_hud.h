@@ -6,8 +6,8 @@
 #include "b4p_vtable.h"
 #include "b4p_other.h"
 
-#define MPH_CONV_FACTOR 2.2369360f
-#define KPH_CONV_FACTOR 3.60f
+#define MPH_CONV_FACTOR 2.23694f
+#define KPH_CONV_FACTOR 3.6f
 
 // --------------------------------
 //    Enums
@@ -194,8 +194,7 @@ extern CB4HUDManager* gHUDManager;
 extern gHUDSpeedoComponent_t* gHUDSpeedoComponent;
 extern gHUDPosComponent_t* gHUDPosComponent;
 extern gHUDLapComponent_t* gHUDLapComponent;
-extern float* glrMPHConversionFactor;
-extern float* glrKPHConversionFactor;
+extern uint16_t** CB4HUDComponent__mgapHUDStrings;
 
 // --------------------------------
 //    B4 Functions

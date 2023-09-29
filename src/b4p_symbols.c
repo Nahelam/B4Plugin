@@ -93,6 +93,7 @@ SYM(CB4DebugVSelectEntry__Prepare_t, CB4DebugVSelectEntry__Prepare, 0x1877A8);
 SYM(CB4HUDManager*, gHUDManager, 0x1C024A0);
 SYM(gHUDSpeedoComponent_t*, gHUDSpeedoComponent, 0x1C03AC0);
 SYM(gHUDPosComponent_t*, gHUDPosComponent, 0x1C02A80);
+SYM(uint16_t**, CB4HUDComponent__mgapHUDStrings, 0x45CA50);
 
 SYM(CB4HUDManager__PrepareNormalComponents_t, CB4HUDManager__PrepareNormalComponents, 0x16AD30);
 SYM(CB4HUDManager__Render_t, CB4HUDManager__Render, 0x16BA38);

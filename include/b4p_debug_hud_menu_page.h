@@ -43,6 +43,7 @@ extern ESpeedoUnit gleDebugHUDMenuSpeedometerUnit;
 void CB4DebugHUDMenuPage__Prepare(CB4DebugHUDMenuPage* _this);
 void CB4DebugHUDMenuPage__Update(CB4DebugHUDMenuPage* _this);
 void CB4DebugHUDMenuPage__Release(CB4DebugHUDMenuPage* _this);
+void CB4DebugHUDMenuPage__InitSelections(CB4DebugHUDMenuPage* _this);
 
 // --------------------------------
 //    B4 Variables

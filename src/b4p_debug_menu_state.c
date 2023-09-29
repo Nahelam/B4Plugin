@@ -66,10 +66,10 @@ void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAc
         }
     }
 
-
+/*
     if (leAction != eGtStateActionUpdate)
     {
         logger.WriteF("Action: %08X, ActionData: %08X, UserData: %08X", leAction, lpActionData, lpUserData);
     }
-
+*/
 }
