@@ -40,14 +40,15 @@ void CB4DebugMenuState__ActionHook(CB4DebugMenuState* _this, EGtStateAction leAc
                 if ((CB4DebugMenuPageBase*)lpUserData != &gDebugMainMenuPage.mBase) // When we are coming back from a sub menu with changes applied
                 {
                     CB4DebugMainMenuPage__Prepare(&gDebugMainMenuPage);
+                    CB4HUDSoundManager__HandleFESound(gHUDSoundManager, eSoundFESelect);
                 }
                 else
                 {
                     lpDestinationPage = gapDebugMenuPagesBases[gDebugMenuComponents->mVSelect.mSelectionData.mu16CurrentItem + 1]; // Current entry + 1 because index 0 is main menu
                     lpfPrepare = (CB4DebugMenuPageBase__Prepare_t)lpDestinationPage->__vtable->Prepare.__pfn;
                     lpfPrepare(lpDestinationPage);
+                    CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x34);
                 }
-                CB4HUDSoundManager__HandleFESound(gHUDSoundManager, 0x34);
                 break;
 
             case eMenuFlowEventMenuPageBack:
