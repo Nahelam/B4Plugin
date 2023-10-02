@@ -1,6 +1,5 @@
 #include "b4p_hud.h"
 #include "b4p_debug_hud_menu_page.h"
-#include "b4p_other.h"
 
 /*
 void CB4HUDManager__PrepareNormalComponentsHook(CB4HUDManager* _this, EPlayerCarIndex lePlayer)

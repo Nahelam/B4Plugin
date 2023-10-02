@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include "b4p_debug_original_menu_page.h"
 
-#define NB_PAGES 3
+#define NB_PAGES 4
 
 // --------------------------------
 //    Enums

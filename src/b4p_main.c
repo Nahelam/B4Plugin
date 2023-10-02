@@ -1,15 +1,21 @@
+#include <stdint.h>
 #include "pcsx2f_api.h"
 #include "log.h"
 #include "injector.h"
+#include "mips.h"
 #include "b4p_debug_menu_pages.h"
 #include "b4p_debug_menu_page_manager.h"
 #include "b4p_hud.h"
+#include "b4p_other.h"
 #include "b4p_state.h"
 #include "b4p_main_menu_state.h"
 #include "b4p_debug_original_menu_page.h"
 #include "b4p_debug_menu_state.h"
 #include "b4p_debug_vselect_component.h"
 #include "b4p_debug_vselect_option_component.h"
+
+#define UPPER16(x) (uint16_t)((x >> 16) & 0xFFFF)
+#define LOWER16(x) (uint16_t)(x & 0xFFFF)
 
 int CompatibleCRCList[] = { 0x28B66C81, 0xD224D348 };
 char OSDText[OSDStringNum][OSDStringSize] = { {1} };
@@ -29,8 +35,14 @@ void init()
     injector.WriteMemory32(0x49F76C, (uintptr_t)&CB4DebugOriginalMenuPage__UpdateHook);
     injector.MakeJAL(0x186CC8, (uintptr_t)&CB4DebugMenuPageManager__ImmediateLeadOut2); // Make the original debug menu use ImmediateLeadOut2 to catch the forward event
     
-    // HUD
+    // Gameplay
+    injector.WriteMemory32(0x20A4E4, lui(v0, UPPER16((uintptr_t)&gCarAirControl)));
+    injector.WriteMemory32(0x20A4EC, lbu(a1, v0, LOWER16((uintptr_t)&gCarAirControl))); // Using positive offset for lbu right now, but if the lower 16 bits of the address are > 0x7FFF, a negative offset must be used and the upper 16 bits would require a +1
+    injector.MakeJAL(0x104144, (uintptr_t)&CGtFramerateManager__PrepareHook);
+    injector.MakeJAL(0x273764, (uintptr_t)&CB4CameraBehaviour__ApplySpeedBasedShakeHook);
+    injector.MakeJAL(0x27A508, (uintptr_t)&CB4CameraBehaviour__ApplySpeedBasedShakeHook);
     
+    // HUD
     // I could use gGraphicsManager.mbDrawHUD instead but I prefer making 100% that sure it will not be turned back on by the game
     injector.MakeJAL(0x10DDEC, (uintptr_t)&CB4HUDManager__RenderHook);
     injector.MakeJAL(0x10DE80, (uintptr_t)&CB4HUDManager__RenderHook);

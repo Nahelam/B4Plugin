@@ -3,10 +3,8 @@
 #include "b4p_debug_hud_menu_page.h"
 #include "b4p_debug_menu_common_options.h"
 #include "b4p_debug_menu_page_manager.h"
-#include "b4p_debug_menu_page_base.h"
 #include "b4p_debug_menu_components.h"
 #include "b4p_debug_background_component.h"
-#include "b4p_debug_vselect_option_component.h"
 #include "b4p_input.h"
 #include "b4p_other.h"
 

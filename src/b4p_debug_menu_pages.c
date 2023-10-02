@@ -1,4 +1,5 @@
 #include "b4p_debug_menu_pages.h"
+#include "b4p_debug_gameplay_menu_page.h"
 #include "b4p_debug_hud_menu_page.h"
 #include "b4p_debug_main_menu_page.h"
 #include "b4p_vtable.h"
@@ -11,11 +12,15 @@ CB4DebugMainMenuPage__vtable gDebugMainMenuPage__vtable;
 CB4DebugHUDMenuPage gDebugHUDMenuPage;
 CB4DebugHUDMenuPage__vtable gDebugHUDMenuPage__vtable;
 
+CB4DebugGameplayMenuPage gDebugGameplayMenuPage;
+CB4DebugGameplayMenuPage__vtable gDebugGameplayMenuPage__vtable;
+
 static void InitPagesBases()
 {    
     gapDebugMenuPagesBases[0] = &gDebugMainMenuPage.mBase;
     gapDebugMenuPagesBases[1] = &gDebugHUDMenuPage.mBase;
-    gapDebugMenuPagesBases[2] = &gDebugMenuPages->mDebugMenu.mBase;
+    gapDebugMenuPagesBases[2] = &gDebugGameplayMenuPage.mBase;
+    gapDebugMenuPagesBases[3] = &gDebugMenuPages->mDebugMenu.mBase;
 }
 
 static void InitVTable(CB4DebugMenuPageBase* lpPageBase, CB4DebugMenuPageBase__vtable* lpVTable, void* lpfPrepare, void* lpfUpdate, void* lpfRelease)
@@ -38,6 +43,7 @@ static void InitVTable(CB4DebugMenuPageBase* lpPageBase, CB4DebugMenuPageBase__v
 static void InitPagesSelections()
 {
     CB4DebugHUDMenuPage__InitSelections(&gDebugHUDMenuPage);
+    CB4DebugGameplayMenuPage__InitSelections(&gDebugGameplayMenuPage);
 }
 
 void CB4DebugMenuPages__InitHook()
@@ -52,4 +58,5 @@ void CB4DebugMenuPages__InitHook()
     
     InitVTable(&gDebugMainMenuPage.mBase, &gDebugMainMenuPage__vtable.__vtable, (void*)&CB4DebugMainMenuPage__Prepare, (void*)&CB4DebugMainMenuPage__Update, (void*)&CB4DebugMainMenuPage__Release);
     InitVTable(&gDebugHUDMenuPage.mBase, &gDebugHUDMenuPage__vtable.__vtable, (void*)&CB4DebugHUDMenuPage__Prepare, (void*)&CB4DebugHUDMenuPage__Update, (void*)&CB4DebugHUDMenuPage__Release);
+    InitVTable(&gDebugGameplayMenuPage.mBase, &gDebugGameplayMenuPage__vtable.__vtable, (void*)&CB4DebugGameplayMenuPage__Prepare, (void*)&CB4DebugGameplayMenuPage__Update, (void*)&CB4DebugGameplayMenuPage__Release);
 }

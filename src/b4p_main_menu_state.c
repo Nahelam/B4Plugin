@@ -1,5 +1,4 @@
 #include "b4p_main_menu_state.h"
-#include "b4p_state.h"
 #include "b4p_input.h"
 
 void CB4MainMenuState__ActionHook(CB4MainMenuState* _this, EGtStateAction leAction, void* lpOwner, void* lpActionData, void* lpUserData)

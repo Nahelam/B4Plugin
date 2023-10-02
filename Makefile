@@ -1,9 +1,10 @@
 EE_TOOL_PREFIX = mips64r5900el-ps2-elf-
 EE_CC := $(EE_TOOL_PREFIX)gcc
 
-EE_OBJS = b4p_debug_menu_common_options.o \
+EE_OBJS = b4p_debug_gameplay_menu_page.o \
           b4p_debug_hud_menu_page.o \
           b4p_debug_main_menu_page.o \
+          b4p_debug_menu_common_options.o \
           b4p_debug_menu_page_manager.o \
           b4p_debug_menu_pages.o \
           b4p_debug_menu_state.o \
@@ -13,6 +14,7 @@ EE_OBJS = b4p_debug_menu_common_options.o \
           b4p_hud.o \
           b4p_main.o \
           b4p_main_menu_state.o \
+          b4p_other.o \
           b4p_state.o \
           b4p_symbols.o \
           log.o \

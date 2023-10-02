@@ -143,11 +143,16 @@ SYM(CB4MenuSelectionData__SelectPrev_t, CB4MenuSelectionData__SelectPrev, 0x183E
 SYM(CB4GraphicsManager*, gGraphicsManager, 0x1BFE760);
 SYM(void*, gAptManager, 0x1C0A2D0);
 SYM(void*, gGame, 0x4F3300);
+SYM(CB4NetworkManager*, gNetworkManager, 0x1C135F0);
 
 SYM(CB4GraphicsManager__SetVideoMode_t, CB4GraphicsManager__SetVideoMode, 0x14C338);
 SYM(CB4AptManager__SetScreenSettings_t, CB4AptManager__SetScreenSettings, 0x17D370);
 SYM(CB4Game__SetFrontendFrameRate_t, CB4Game__SetFrontendFrameRate, 0x1125C0);
 SYM(CB4Game__IsMultiplayerMode_t, CB4Game__IsMultiplayerMode, 0x105060);
+SYM(CB4Game__PrepareWorld_t, CB4Game__PrepareWorld, 0x104AA0);
+SYM(CB4RaceCarPhysics__ApplyAftertouch_t, CB4RaceCarPhysics__ApplyAftertouch, 0x20A468);
+SYM(CB4CameraBehaviour__ApplySpeedBasedShake_t, CB4CameraBehaviour__ApplySpeedBasedShake, 0x27EBF0);
+SYM(CGtFramerateManager__Prepare_t, CGtFramerateManager__Prepare, 0x303F88);
 
 // ----------------------------------------------------------------
 //    b4p_sound

@@ -3,11 +3,11 @@
 #include "b4p_debug_menu_components.h"
 #include "b4p_debug_background_component.h"
 #include "b4p_debug_vselect_component.h"
-#include "b4p_debug_menu_page_base.h"
 #include "b4p_input.h"
 
 static const char* kapcDebugMainMenuEntryNames[] = {
     "HUD Menu",
+    "Gameplay Menu",
     "Legacy Menu"
 };
 
